@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// 一時停止・再開を制御する。
@@ -7,6 +8,9 @@ public class PauseManager : MonoBehaviour
 {
     /// <summary>true の時は一時停止とする</summary>
     bool m_pauseFlg = false;
+    bool m_startorstop = false;
+    [SerializeField] UnityEvent panelObject;
+    [SerializeField] UnityEvent panelObject2;
 
     void Update()
     {
@@ -14,6 +18,16 @@ public class PauseManager : MonoBehaviour
         if (Input.GetButtonDown("Cancel"))
         {
             PauseResume();
+            if (m_startorstop)
+            {
+                panelObject.Invoke();
+                m_startorstop = false;
+            }
+            else if (m_startorstop == false)
+            {
+                panelObject2.Invoke();
+                m_startorstop = true;
+            }
         }
     }
 

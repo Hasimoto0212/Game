@@ -15,11 +15,15 @@ public class PlayerController2D : MonoBehaviour, IPause
     [SerializeField] bool m_layLog = false;
 
     Vector2 m_velocity;
+    Animator m_anim;
+    SpriteRenderer m_sprite;
 
     // Start is called before the first frame update
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
+        m_anim = GetComponent<Animator>();
+        m_sprite = GetComponent<SpriteRenderer>();
         m_mmoveSpeed = m_moveSpeed;
     }
 
@@ -31,15 +35,27 @@ public class PlayerController2D : MonoBehaviour, IPause
         {
             Ground();
         }
+
+        if (m_anim)
+        {
+            bool isGrounded = Ground();
+            m_anim.SetBool("isGrounded", isGrounded);
+
+            if (isGrounded)
+            {
+                m_anim.SetFloat("RunSpeed", Mathf.Abs(m_rb.velocity.x));
+            }
+        }
     }
 
     void Movement()
     {
-        float h = Input.GetAxis("Horizontal");
+        float h = Input.GetAxisRaw("Horizontal");
         Vector2 velocity = m_rb.velocity;   // この変数 velocity に速度を計算して、最後に Rigidbody2D.velocity に戻す
 
         if (h != 0)
         {
+            m_sprite.flipX = (h < 0);
             velocity.x = h * m_mmoveSpeed;
         }
 
