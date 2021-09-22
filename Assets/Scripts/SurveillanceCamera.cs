@@ -9,8 +9,8 @@ public class SurveillanceCamera : MonoBehaviour, IPause
     [SerializeField] float m_damage;
     [SerializeField] GameObject m_gameManager;
 
-    [SerializeField]float m_Roat = 0.01f;
-    float m_saveRoat;
+    [SerializeField]public float m_Roat = 0.01f;
+    public float m_saveRoat;
 
     // Start is called before the first frame update
     void Start()

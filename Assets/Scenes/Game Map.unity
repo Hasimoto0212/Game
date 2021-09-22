@@ -299,6 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_goalObject: {fileID: 649892347}
+  m_prefab: {fileID: 0}
 --- !u!1 &120863106
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CoinCounter: 0
   m_scoreText: {fileID: 1027541174}
+  m_clearScoreText: {fileID: 0}
 --- !u!4 &121784605
 Transform:
   m_ObjectHideFlags: 0
@@ -461,6 +463,9 @@ MonoBehaviour:
   m_slider: {fileID: 219671910}
   m_Player: {fileID: 405273092}
   m_maxHp: 500
+  panelObject:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &121784607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,7 +843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e40faa264fb21f4a9ef9c0f80c072d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   m_clearingConditions: 1
+  panelObject:
+    m_PersistentCalls:
+      m_Calls: []
   crearitem: 0
 --- !u!61 &649892349
 BoxCollider2D:
@@ -1888,12 +1897,12 @@ PrefabInstance:
     - target: {fileID: 8228841280265909701, guid: ee13fc28e89394542afca91b33064744,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.29
+      value: -3.61
       objectReference: {fileID: 0}
     - target: {fileID: 8228841280265909701, guid: ee13fc28e89394542afca91b33064744,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.234518
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 8228841280265909701, guid: ee13fc28e89394542afca91b33064744,
         type: 3}

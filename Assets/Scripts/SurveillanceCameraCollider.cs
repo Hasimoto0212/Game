@@ -22,7 +22,17 @@ public class SurveillanceCameraCollider : MonoBehaviour
         SurveillanceCamera sc = m_enemycamera.GetComponent<SurveillanceCamera>();
         if (collision.gameObject.tag == "Player")
         {
+            sc.m_saveRoat = 0;
             sc.Surveillance();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        SurveillanceCamera sc = m_enemycamera.GetComponent<SurveillanceCamera>();
+        if (collision.gameObject.tag == "Player")
+        {
+            sc.m_saveRoat = sc.m_Roat;
         }
     }
 }
