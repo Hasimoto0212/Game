@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
-    [SerializeField]int m_score;
-    [SerializeField]GameObject m_scoreManager;
+    [SerializeField] int m_score;
+    [SerializeField] GameObject m_scoreManager;
+    [SerializeField] GameObject m_prefab;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class CoinController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Instantiate(m_prefab);
             if (m_scoreManager != null)
             {
                 ScoreManager sm = m_scoreManager.GetComponent<ScoreManager>();

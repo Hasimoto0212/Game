@@ -67,6 +67,7 @@ public class PlayerController2D : MonoBehaviour, IPause
 
         if (Input.GetButtonDown("Jump") && Ground())
         {
+            GetComponent<AudioSource>().Play();
             velocity.y = m_jump;
         }
         m_rb.velocity = velocity;

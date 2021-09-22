@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SeeSlider : MonoBehaviour/*, IPause*/
@@ -9,6 +10,7 @@ public class SeeSlider : MonoBehaviour/*, IPause*/
     [SerializeField] GameObject m_slider;
     [SerializeField] GameObject m_Player;
     [SerializeField] float m_maxHp = 0f;
+    [SerializeField] UnityEvent panelObject;
 
     float m_nowHp;
 
@@ -27,8 +29,11 @@ public class SeeSlider : MonoBehaviour/*, IPause*/
     // Update is called once per frame
     void Update()
     {
+        AudioSource audio = GetComponent<AudioSource>();
         if (m_nowHp <= 0)
         {
+            audio.Stop();
+            panelObject.Invoke();
             Destroy(m_Player);
         }
     }

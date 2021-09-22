@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 動く床を制御するコンポーネント
 /// </summary>
-public class MovingPlatformController2D : MonoBehaviour
+public class MovingPlatformController2D : MonoBehaviour, IPause
 {
     /// <summary>振り幅(x)</summary>
     public float m_amplitudeX = 1f;
@@ -13,8 +13,10 @@ public class MovingPlatformController2D : MonoBehaviour
     public float m_amplitudeY = 0f;
     /// <summary>動く速さ</summary>
     public float m_speedX = 2.0f;
+    float m_saveSpeedX;
     /// <summary>動く速さ</summary>
     public float m_speedY = 2.0f;
+    float m_saveSpeedY;
     /// <summary>横移動のためのタイマー</summary>
     private float m_timerX;
     /// <summary>縦移動のためのタイマー</summary>
@@ -26,13 +28,15 @@ public class MovingPlatformController2D : MonoBehaviour
     {
         // 初期位置を記憶しておく
         m_initialPosition = this.transform.position;
+        m_saveSpeedX = m_speedX;
+        m_saveSpeedY = m_speedY;
     }
 
     void Update()
     {
         // 三角関数を使ってオブジェクトの位置を往復させる
-        m_timerX += Time.deltaTime * m_speedX;
-        m_timerY += Time.deltaTime * m_speedY;
+        m_timerX += Time.deltaTime * m_saveSpeedX;
+        m_timerY += Time.deltaTime * m_saveSpeedY;
         float posX = Mathf.Sin(m_timerX) * m_amplitudeX;
         float posY = Mathf.Sin(m_timerY) * m_amplitudeY;
         Vector2 pos = m_initialPosition;
@@ -52,5 +56,17 @@ public class MovingPlatformController2D : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
             collision.gameObject.transform.SetParent(null);
+    }
+
+    public void Pause()
+    {
+        m_saveSpeedX = 0;
+        m_saveSpeedY = 0;
+    }
+
+    public void Resume()
+    {
+        m_saveSpeedX = m_speedX;
+        m_saveSpeedY = m_speedY;
     }
 }

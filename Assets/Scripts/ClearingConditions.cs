@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ClearingConditions : MonoBehaviour
 {
+    [SerializeField] GameObject gameManager;
     [SerializeField] int m_clearingConditions;
+    [SerializeField] UnityEvent panelObject;
     public int crearitem;
 
     // Start is called before the first frame update
@@ -21,9 +24,11 @@ public class ClearingConditions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        AudioSource audio = gameManager.GetComponent<AudioSource>();
         if (crearitem >= m_clearingConditions && collision.gameObject.tag == "Player")
         {
-            Debug.Log("crear");
+            audio.Stop();
+            panelObject.Invoke();
         }
     }
 }
