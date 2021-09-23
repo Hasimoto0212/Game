@@ -11,6 +11,7 @@ public class SurveillanceCamera : MonoBehaviour, IPause
 
     [SerializeField]public float m_Roat = 0.01f;
     public float m_saveRoat;
+    bool m_work = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,10 @@ public class SurveillanceCamera : MonoBehaviour, IPause
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0f, 0f, 90.0f * m_saveRoat);
+        if (m_work) 
+        {
+            transform.Rotate(0f, 0f, 90.0f * m_saveRoat);
+        }
     }
 
     public void Surveillance()
@@ -34,12 +38,12 @@ public class SurveillanceCamera : MonoBehaviour, IPause
 
     public void Pause()
     {
-        m_saveRoat = 0;
+        m_work = false;
     }
 
     public void Resume()
     {
-        m_saveRoat = m_Roat;
+        m_work = true;
     }
 }
 

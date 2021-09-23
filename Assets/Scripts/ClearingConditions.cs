@@ -24,10 +24,12 @@ public class ClearingConditions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Timer T = gameManager.GetComponent<Timer>();
         AudioSource audio = gameManager.GetComponent<AudioSource>();
         if (crearitem >= m_clearingConditions && collision.gameObject.tag == "Player")
         {
             audio.Stop();
+            T.m_clearTime = T.m_timer;
             panelObject.Invoke();
         }
     }

@@ -22,8 +22,8 @@ public class SurveillanceCameraCollider : MonoBehaviour
         SurveillanceCamera sc = m_enemycamera.GetComponent<SurveillanceCamera>();
         if (collision.gameObject.tag == "Player")
         {
-            sc.m_saveRoat = 0;
             sc.Surveillance();
+            sc.m_saveRoat = 0;
         }
     }
 
