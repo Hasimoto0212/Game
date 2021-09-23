@@ -29,7 +29,6 @@ public class CrearItemGet : MonoBehaviour
             m_itemCount += 1;
             cc.crearitem += m_itemCount;
             Destroy(this.gameObject);
-            Debug.Log("クリアアイテムを獲得");
         }
     }
 }

@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e55f0e1ca90483441806312eb0f5d037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sceneNameToBeLoaded: Play
+  m_sceneNameToBeLoaded: Explanation
   m_fadePanel: {fileID: 0}
   m_fadeSpeed: 1
 --- !u!114 &664176789
@@ -310,7 +310,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Play
+          m_StringArgument: Explanation
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &664176790

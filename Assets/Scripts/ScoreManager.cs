@@ -21,7 +21,6 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int score)
     {
         m_score += score;   // m_score = m_score + score の短縮形
-        Debug.LogFormat("Score: {0}", m_score);
 
         // スコアを画面に表示する
         Text scoreText = m_scoreText.GetComponent<Text>();
